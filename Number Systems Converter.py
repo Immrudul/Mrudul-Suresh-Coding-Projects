@@ -1,6 +1,5 @@
-#December 2021, Hackathon, North Park Secondary School
 #Number Systems Converter
-#By : Mrudul Suresh (735571) , Harsh Patel (678847)
+#By : Mrudul Suresh 
 
 
 import math as m
