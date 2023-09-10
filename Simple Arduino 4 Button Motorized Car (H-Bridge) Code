@@ -1,0 +1,79 @@
+//Video of Real-life Functional Circuit using Code: https://www.youtube.com/shorts/KGtrC-ntMO8
+
+//values that remain the same(so using const): 
+const int buttonPinF = 6; // setting the pins for each button
+const int buttonPinB = 5; // setting the pins for each button
+const int buttonPinR = 4; // setting the pins for each button
+const int buttonPinL = 3; // setting the pins for each button
+
+const int motor1F = 10; // setting the pins for each motor side
+const int motor1B = 9; // setting the pins for each motor side
+const int motor2F = 8; // setting the pins for each motor side
+const int motor2B = 7; // setting the pins for each motor side
+
+// variables  that will change(so no const):
+int Fbutton = 0; // creating variables to store the value of each button
+int Bbutton = 0; // creating variables to store the value of each button
+int Rbutton = 0; // creating variables to store the value of each button
+int Lbutton = 0; // creating variables to store the value of each button
+
+void setup(){
+  // initialize the Motor pins as an output:
+  pinMode(motor1F, OUTPUT);
+  pinMode(motor1B, OUTPUT);
+  pinMode(motor2F, OUTPUT);
+  pinMode(motor2B, OUTPUT);
+  
+  // initialize the button pins as an input:
+  pinMode(buttonPinF, INPUT);
+  pinMode(buttonPinB, INPUT);
+  pinMode(buttonPinR, INPUT);
+  pinMode(buttonPinL, INPUT);
+}
+
+void loop(){
+
+  // read the button values:
+  Fbutton = digitalRead(buttonPinF);
+  Bbutton = digitalRead(buttonPinB);
+  Rbutton = digitalRead(buttonPinR);
+  Lbutton = digitalRead(buttonPinL);
+  
+  //check is the button state is pressed or in this case is high:
+  if(Fbutton == HIGH){
+    // turn motor on:
+    delay(100);
+    digitalWrite(motor1F, LOW); 
+    digitalWrite(motor1B, HIGH); 
+    digitalWrite(motor2F, LOW); 
+    digitalWrite(motor2B, HIGH); 
+  }else if (Bbutton == HIGH){
+    // turn motor on:
+    delay(100);
+    digitalWrite(motor1F, HIGH); 
+    digitalWrite(motor1B, LOW); 
+    digitalWrite(motor2F, HIGH); 
+    digitalWrite(motor2B, LOW); 
+  }else if (Rbutton == HIGH){
+    // turn motor on:
+    delay(100);
+    digitalWrite(motor1F, HIGH); 
+    digitalWrite(motor1B, LOW); 
+    digitalWrite(motor2F, LOW); 
+    digitalWrite(motor2B, HIGH); 
+  }else if (Lbutton == HIGH){
+    // turn motor on:
+    delay(100);
+    digitalWrite(motor1F, LOW); 
+    digitalWrite(motor1B, HIGH); 
+    digitalWrite(motor2F, HIGH); 
+    digitalWrite(motor2B, LOW); 
+  }else{
+    delay(100);
+    digitalWrite(motor1F, LOW); 
+    digitalWrite(motor1B, LOW); 
+    digitalWrite(motor2F, LOW); 
+    digitalWrite(motor2B, LOW); 
+  }
+
+}
