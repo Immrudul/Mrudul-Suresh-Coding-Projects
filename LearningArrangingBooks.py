@@ -23,7 +23,7 @@ else:
 #['L', 'M', 'S']
 
 
-
+#Focus on learning 
 def minSwaps(arr):
     n = len(arr)
     arrpos = [*enumerate(arr)]
