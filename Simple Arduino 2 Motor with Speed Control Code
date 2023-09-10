@@ -1,0 +1,50 @@
+int speed = 7;
+int motor1F = 9;
+int motor1B = 8;
+int motor2F = 6;
+int motor2B = 5;
+//int forward = 11;
+int backward = 12;
+int control = A0;
+float time = 50;
+float reg = 0;
+void setup(){
+    Serial.begin(9600);
+  pinMode(control , INPUT);
+ // pinMode(forward, INPUT);
+  pinMode(backward, INPUT);
+  pinMode(motor1F, OUTPUT);
+  pinMode(motor1B, OUTPUT);
+  pinMode(motor2F, OUTPUT);
+  pinMode(motor2B, OUTPUT);
+  pinMode(speed, OUTPUT);
+
+}
+void loop(){
+  if(digitalRead(backward)==HIGH){
+    digitalWrite(motor1B, LOW);
+    digitalWrite(motor2B, LOW);
+  	reg = ((analogRead(control)*time)/1023);
+    digitalWrite(motor1F, HIGH);
+    digitalWrite(motor2F, HIGH);
+    digitalWrite(speed, HIGH);
+    delay(reg);
+    digitalWrite(speed, LOW);
+    delay(time - reg);
+    Serial.print("F");
+    Serial.println();
+  }else{
+    digitalWrite(motor1F, LOW);
+    digitalWrite(motor2F, LOW);
+  	reg = ((analogRead(control)*time)/1023);
+    digitalWrite(motor1B, HIGH);
+    digitalWrite(motor2B, HIGH);
+    digitalWrite(speed, HIGH);
+    delay(reg);
+    digitalWrite(speed, LOW);
+    delay(time - reg);
+    Serial.print("B");
+    Serial.println();
+  }   
+ 
+}
