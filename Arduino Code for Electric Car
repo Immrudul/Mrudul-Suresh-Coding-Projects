@@ -1,0 +1,158 @@
+Final Code for our Marshla (Mrudul Harsh Tesla)
+
+//Assigning variables to their corresponding Arduino pin numbers including motors and LEDs
+const int motor1pin = 10;
+const int motor2pin = 9;
+const int motor4pin = 11;
+const int motor3pin = 12;
+const int soundpin = 8;
+const int braking = 13;
+const int leftInd = 5;
+const int rightInd = 6;
+const int reverse = 4;
+const int tilt = 1;
+
+//Assigning variables to their corresponding Arduino pin numbers for the ultrasonic sensor
+const int echoPin = 2;
+const int trigPin = 3;
+long duration;
+int distance;
+
+
+//Initializing the variables to Input or Output
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(motor1pin, OUTPUT);
+  pinMode(motor2pin, OUTPUT);
+  pinMode(motor3pin, OUTPUT);
+  pinMode(motor4pin, OUTPUT);
+  pinMode(soundpin, OUTPUT);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+
+  pinMode(braking, OUTPUT);
+  pinMode(leftInd, OUTPUT);
+  pinMode(rightInd, OUTPUT);
+  pinMode(reverse, OUTPUT);
+
+  pinMode(tilt, INPUT);
+
+}
+
+// Defining a function for the left turn of the car which includes code for motors and indicator LEDs
+void leftTurn() {
+
+  digitalWrite(motor1pin, LOW);
+  digitalWrite(motor2pin, HIGH);
+  digitalWrite(motor3pin, HIGH);
+  digitalWrite(motor4pin, LOW);
+  digitalWrite(leftInd, HIGH);
+  delay(500);
+  digitalWrite(leftInd, LOW);
+  delay(500);
+  digitalWrite(leftInd, HIGH);
+  delay(500);
+  digitalWrite(leftInd, LOW);
+  delay(500);
+}
+
+// Defining a function for the reverse movement of the car which includes code for motors, LEDs, and speaker
+
+void Backwards() {
+  digitalWrite(reverse, HIGH);
+  digitalWrite(motor1pin, LOW);
+  digitalWrite(motor2pin, HIGH);
+  digitalWrite(motor3pin, LOW);
+  digitalWrite(motor4pin, HIGH);
+  tone(8, 500);
+  delay(500);
+  noTone(8);
+  delay(500);
+  tone(8, 500);
+  delay(500);
+  noTone(8);
+  delay(500);
+  digitalWrite(reverse, LOW);
+}
+
+// Defining a function for the car stopping includng code for motors and LEDs
+void Stop() {
+  digitalWrite(braking, HIGH);
+  digitalWrite(motor1pin, LOW);
+  digitalWrite(motor2pin, LOW);
+  digitalWrite(motor3pin, LOW);
+  digitalWrite(motor4pin, LOW);
+  delay(1500);
+  digitalWrite(braking, LOW);
+}
+
+// Defining a function for the right turn of the car which includes code for motors and indicator LEDs
+void rightTurn() {
+  digitalWrite(motor1pin, HIGH);
+  digitalWrite(motor2pin, LOW);
+  digitalWrite(motor3pin, LOW);
+  digitalWrite(motor4pin, HIGH);
+  digitalWrite(rightInd, HIGH);
+  delay(500);
+  digitalWrite(rightInd, LOW);
+  delay(500);
+  digitalWrite(rightInd, HIGH);
+  delay(500);
+  digitalWrite(rightInd, LOW);
+  delay(500);
+}
+
+// Defining a function for the forward drive of the car which includes code for only the motors
+void Forward() {
+  digitalWrite(motor1pin, HIGH);
+  digitalWrite(motor2pin, LOW);
+  digitalWrite(motor3pin, HIGH);
+  digitalWrite(motor4pin, LOW);
+  delay(2000);
+}
+
+//Defining a function for the ultrasonic sensor and defining it as "int" because we want an integer value to be returned (distance)
+int Sensor() {
+  // Clears the trigPin condition
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
+  distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+  // Displays the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  //Returning our integer value which is the distance
+  Serial.print(distance);
+  Serial.println(" cm");
+  return distance;
+}
+
+void nothing() {
+  nothing();
+}
+
+//Defining a loop in which each function is called for each type of drive for the car
+void loop() {
+  if (Sensor() <= 10) {
+    Stop();
+    Backwards();
+    Stop();
+    int randInt = random(0, 1);
+    if (randInt == 0) {
+      leftTurn();
+    } else {
+      rightTurn();
+    }
+  } else {
+    Stop();
+    Forward();
+  }
+}
