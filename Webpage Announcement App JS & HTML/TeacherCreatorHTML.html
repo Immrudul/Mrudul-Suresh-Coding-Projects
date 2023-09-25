@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head><script src="teacherCreatorPage.js"></script></head>
+<html>
+    <!-- onloading to get the existng announcemnts even when the browser is closed-->
+    <body onload = "getExistingAnnouncements()">
+    <div>     
+        <!--Title--> 
+            <center><h1><strong><u>Teacher Announcement Page</u></strong></h1></center>
+    </div>
+
+    <div>
+        <!-- Guiding user on how to use the program-->
+            <br><text>Please Select all categories related to your announcement and write a description 
+    about your announcement </text>
+    </div>
+    <form>
+    <div>
+        <!--Grade Checkboxes-->
+            <h2><u>Grade</u></h2>
+                <input type="checkbox" id="htmlTGrade9">Grade 9
+                <br><input type="checkbox" id="htmlTGrade10">Grade 10
+                <br><input type="checkbox" id="htmlTGrade11">Grade 11
+                <br><input type="checkbox" id="htmlTGrade12">Grade 12
+                <br><input type="checkbox" id="htmlTAllGrades">All Grades
+    </div>
+    <div>
+        <!--Gender Checkboxes-->
+             <h2><u>Gender</u></h2>
+                <input type="checkbox" id="htmlTMale">Male
+                <br><input type="checkbox" id="htmlTFemale">Female
+                <br><input type="checkbox" id="htmlTOther">Other
+                <br><input type="checkbox" id="htmlTAllGenders">All Genders
+    </div>
+    <div>
+        <!--Club Dropdown-->    
+             <h2><u>Club</u></h2>
+             <select name= "Choose a Club" id="htmlTClubs"> 
+                <option value= "Select" disabled selected>-Select- </option> 
+                <option value= "DECA">DECA </option> 
+                <option value= "HOSA">HOSA </option> 
+                <option value= "Model UN">Model UN </option> 
+                <option value= "ECO Club">Eco Club </option> 
+                <option value= "Chess Club"> Chess Club </option>  
+                <option value= "Hack Club"> Hack Club </option> 
+                <option value= "Robotics"> Robotics </option> 
+                <option value= "All Clubs">All Clubs </option> 
+      </select>
+    <div>
+        <!--Announcement description-->
+            <h2>Announcement Description</h2>
+                <textarea id="htmlTDescriptionBox" rows='10' cols='100' 
+        placeholder="Write Announcement Description Here"></textarea>
+    </div>
+    <div>
+        <!--Post Button-->    
+        <button type="button" onclick="getTeacherInput()">Post</button>   
+    </div>
+    </form>
+    </body>
+</html>
