@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head><script src="studentSearch.js"></script></head>
+<html>
+    <div>     
+        <!--Title--> 
+            <center><h1><strong><u>Search Announcements</u></strong></h1></center>
+    </div>
+
+    <div>
+        <!-- Guiding user on how to use the program-->
+            <br><text>Please aelect all categories related to the announcement you are searching for and click "Search" </text>
+    </div>
+
+    <div>
+        <!--Grade Checkboxes-->
+            <h2><u>Grade</u></h2>
+                <input type="checkbox" id="htmlSGrade9">Grade 9
+                <br><input type="checkbox" id="htmlSGrade10">Grade 10
+                <br><input type="checkbox" id="htmlSGrade11">Grade 11
+                <br><input type="checkbox" id="htmlSGrade12">Grade 12
+                <br><input type="checkbox" id="htmlSAllGrades">All Grades
+    </div>
+    <div>
+        <!--Gender Checkboxes-->
+             <h2><u>Gender</u></h2>
+                <input type="checkbox" id="htmlSMale">Male
+                <br><input type="checkbox" id="htmlSFemale">Female
+                <br><input type="checkbox" id="htmlSOther">Other
+                <br><input type="checkbox" id="htmlSAllGenders">All Genders
+    </div>
+    <div>
+        <!--Club Dropdown-->    
+        <h2><u>Club</u></h2>
+        <select name= "Choose a Club" id="htmlSClubs"> 
+           <option value= "Select" disabled selected>-Select- </option> 
+           <option value= "DECA">DECA </option> 
+           <option value= "HOSA">HOSA </option> 
+           <option value= "Model UN">Model UN </option> 
+           <option value= "ECO Club">Eco Club </option> 
+           <option value= "Chess Club"> Chess Club </option>  
+           <option value= "Hack Club"> Hack Club </option> 
+           <option value= "Robotics"> Robotics </option> 
+           <option value= "All Clubs">All Clubs </option> 
+        </select>
+    </div>
+    <div>
+        <!--Search Button-->              
+        <button onclick="getStudentInput()">Search</button>    
+    </div>
+</html>
